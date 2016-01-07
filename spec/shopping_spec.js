@@ -82,7 +82,7 @@ describe('#addCreditCard', function(){
 describe('#removeFromCart', function(){
 
   beforeEach(function() {
-    var orderNumber = 1
+    var orderNumber = 1;
     var total = 0;
     var cardNumber;
     var cart = [];
@@ -93,7 +93,74 @@ describe('#removeFromCart', function(){
     expect(removeFromCart("pizza")).toEqual([]);
   });
 
+   it("removes the cost of the item from the total", function(){
+    cart = [{pizza: 27, pens: 15}];
+    total = 42;
+    removeFromCart("pizza")
+    expect(total).toEqual(15);
   });
+
+
+  it("alerts you if you're trying to remove an item that isn't in your cart", function(){
+    spyOn(console, 'log');
+    cart = []
+    cart = [{pizza: 27}];
+    removeFromCart("sock")
+    expect(console.log.calls.argsFor(0)).toEqual("That item is not in your cart");
+  });
+
+
+
+});
+
+describe('#placeOrder', function(){
+
+  beforeEach(function() {
+    var orderNumber = 1
+    var total = 0;
+    var cardNumber;
+    var cart = [];
+  });
+
+  it("doesn't let you place an order if you don't have a credit card on file", function(){
+    spyOn(console, 'log');
+    cart = [{pizza: 27}];
+    placeOrder();
+    expect(console.log.calls.argsFor(0)).toEqual("We don't have a credit card on file for you to place your order");
+  });
+
+  it("let's you place an order with a credit card on file", function(){
+    spyOn(console, 'log');
+    cart = [{pizza: 27}];
+    total = 27;
+    cardNumber = 12346312;
+    placeOrder();
+    expect(console.log.calls.argsFor(0)).toEqual(["Your total cost is: $" + total + " and will be charged to the credit card on file (" + cardNumber + "). Your order number is " + orderNumber]);
+  });
+
+  it("incements order number for each order", function(){
+    cart = [{pizza: 27}];
+    total = 27;
+    cardNumber = 12346312;
+    expect(orderNumber).toEqual(1);
+    placeOrder();
+    cart = [{lint roller: 14}, {lysol: 12}];
+    total = 26;
+    expect(orderNumber).toEqual(2);
+  });
+
+
+    it("clears the total after each order", function(){
+    cart = [{pizza: 27}];
+    total = 27;
+    cardNumber = 12346312;
+    placeOrder();
+    expect(total).toEqual(0);
+  });
+
+
+
+
 
 });
 
