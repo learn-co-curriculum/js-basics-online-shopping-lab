@@ -79,3 +79,21 @@ describe('#addCreditCard', function(){
 
 });
 
+describe('#removeFromCart', function(){
+
+  beforeEach(function() {
+    var orderNumber = 1
+    var total = 0;
+    var cardNumber;
+    var cart = [];
+  });
+
+  it("removes the item from the cart", function(){
+    cart = [{pizza: 27}];
+    expect(removeFromCart("pizza")).toEqual([]);
+  });
+
+  });
+
+});
+
