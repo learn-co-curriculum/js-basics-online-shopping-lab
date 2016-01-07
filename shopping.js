@@ -42,9 +42,9 @@ function removeFromCart(item){
   for (var i = 0; i < cart.length; i ++){
     for (var key in cart[i]) {
       if (key == item){
+        price = cart[i][item];
         cart.splice(i, 1);
         console.log(item + " has been removed from your cart")
-        price = cart[item];
         total -= price;
       }
       else{
