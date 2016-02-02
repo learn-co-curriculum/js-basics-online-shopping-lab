@@ -130,7 +130,7 @@ describe('#placeOrder', function(){
     spyOn(console, 'log');
     cart = [{pizza: 27}];
     placeOrder();
-    expect(console.log.calls.argsFor(1)).toEqual(["We don't have a credit card on file for you to place your order"]);
+    expect(console.log.calls.argsFor(0)).toEqual(["We don't have a credit card on file for you to place your order"]);
   });
 
   it("let's you place an order with a credit card on file", function(){
@@ -140,7 +140,7 @@ describe('#placeOrder', function(){
     cardNumber = 12346312;
     spyOn(console, 'log');
     placeOrder();
-    expect(console.log.calls.argsFor(1)).toEqual(["Your total cost is: $" + origTotal + " and will be charged to the credit card on file (" + cardNumber + "). Your order number is " + (orderNumber - 1)]);
+    expect(console.log.calls.argsFor(0)).toEqual(["Your total cost is: $" + origTotal + " and will be charged to the credit card on file (" + cardNumber + "). Your order number is " + (orderNumber - 1)]);
   });
 
   it("increments order number for each order", function(){
