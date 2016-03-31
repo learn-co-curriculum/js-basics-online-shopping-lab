@@ -18,7 +18,7 @@
 	+ `cart` which will store an empty array. Items will be added to the cart as objects (the key the name of the item and the value the price of the item)
  
 
-+ Define a function `addToCart`. This function should accept a parameter of the item the user wants to purchse. This function should automatically set a price for this item by generating a random number between 0 and 100. This function should add the item and the price as an object ({`item: price}`) to the `cart` array. The price of the item should be added to the `total` variable. This function should print out to the console `<item> has been added to your cart` and return cart.
++ Define a function `addToCart`. This function should accept a parameter of the item the user wants to purchase. This function should automatically set a price for this item by generating a random number between 0 and 100. This function should add the item and the price as an object ({`item: price}`) to the `cart` array. The price of the item should be added to the `total` variable. This function should print out to the console `<item> has been added to your cart` and return cart.
 
 + Define a function `viewCart` which does not accept any arguments. This function should loop over every item in `cart` to print out `"In your cart you have: <item> $<price>"`. If there isn't anything in your cart, the function should print out `Your shopping cart is empty"`.
 
@@ -29,3 +29,5 @@
 + Define a function `placeOrder` which does not accept a parameter. The function should check to see if the user has a credit card number of file. If cardNumber is undefined, the function should print out `"We don't have a credit card on file for you to place your order"`. If there is a credit card on file, the function should print out `"Your total cost is: $<total> and will be charged to the credit card on file <cardNumber>. Your order number is  <orderNumber>"`. The function should clear the `total` and `cart` and increment `orderNumber`.
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/js-basics-online-shopping-lab' title='Online Shopping'>Online Shopping</a> on Learn.co and start learning to code for free.</p>
+
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/js-basics-online-shopping-lab'>JS Basics Online Shopping Lab</a> on Learn.co and start learning to code for free.</p>
