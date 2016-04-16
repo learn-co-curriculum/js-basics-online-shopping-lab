@@ -24,7 +24,7 @@
 
 + Define a function `addCreditCard` which accepts a credit card number as parameter. The function should store the number passed in as a parameter to the `cardNumber` variable. The function should print out to the console `"Your credit card number has been saved."` and return `cardNumber`.
 
-+ Define a function `removeFromCart` which accepts a parameter of the item you wish to remove. If the item isn't in the card, the function should print out `"That item is not in your cart"`. If the item is in your cart, it should remove the price of the item from `total`, and remove the object from the `cart` array.
++ Define a function `removeFromCart` which accepts a parameter of the item you wish to remove. If the item isn't in the cart, the function should print out `"That item is not in your cart"`. If the item is in your cart, it should remove the price of the item from `total`, and remove the object from the `cart` array.
 
 + Define a function `placeOrder` which does not accept a parameter. The function should check to see if the user has a credit card number of file. If cardNumber is undefined, the function should print out `"We don't have a credit card on file for you to place your order"`. If there is a credit card on file, the function should print out `"Your total cost is: $<total> and will be charged to the credit card on file <cardNumber>. Your order number is  <orderNumber>"`. The function should clear the `total` and `cart` and increment `orderNumber`.
 
