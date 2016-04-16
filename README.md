@@ -12,7 +12,7 @@
 ## Instructions
 
 + Declare four variables: 
-	+ `orderNumber` which will store the user's order number for their purchase. This number will get incremented after every purchased
+	+ `orderNumber` which will store the user's order number for their purchase. This number will get incremented after every purchase
 	+ `total` which will store the total cost of the items in the shopping card
 	+ `cardNumber` which will store the credit card number when the user choses to enter 
 	+ `cart` which will store an empty array. Items will be added to the cart as objects (the key the name of the item and the value the price of the item)
