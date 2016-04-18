@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var orderNumber = 1
 
 var total = 0
@@ -67,3 +68,6 @@ function placeOrder(){
   }
 }
 
+=======
+'use strict';
+>>>>>>> master
