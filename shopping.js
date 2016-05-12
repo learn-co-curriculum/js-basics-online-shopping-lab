@@ -4,6 +4,10 @@ function getCart() {
   return cart
 }
 
+function setCart(c) {
+  cart = c
+}
+
 function addToCart(item) {
   const price = Math.floor(Math.random() * 100)
 
