@@ -1,5 +1,0 @@
-javascripts:
-  files:
-    - shopping.js
-  specs:
-    - spec/shopping_spec.js
