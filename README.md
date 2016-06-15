@@ -16,15 +16,15 @@ Before we dive into this lab, we need to tell you something: remember how easy i
 But objects don't have sequential indexes like arrays do, so we need another way of getting the keys. Luckily, that's exactly what `Object.keys()` is for!
 
 ``` javascript
-const meals = {
+var meals = {
   breakfast: 'oatmeal',
   lunch: 'tuna',
   dinner: 'spaghetti'
 }
 
-const mealNames = Object.keys(meals)
+var mealNames = Object.keys(meals)
 
-for (let i = 0, l = mealNames.length; i < l; i++) {
+for (var i = 0, l = mealNames.length; i < l; i++) {
   console.log(`I ate ${meals[mealNames[i]]} for ${mealNames[i]}!`)
 }
 
@@ -38,13 +38,13 @@ But this is a little verbose and sort of hard to read: we have to get the name o
 There's a (slightly) better way! JavaScript has a special loop, called `for...in`, that makes iterating over objects a bit easier:
 
 ``` javascript
-const meals = {
+var meals = {
   breakfast: 'oatmeal',
   lunch: 'tuna',
   dinner: 'spaghetti'
 }
 
-for (let mealName in meals) {
+for (var realName in meals) {
   console.log(`I ate ${meals[mealName]} for ${mealName}!`)
 }
 ```
