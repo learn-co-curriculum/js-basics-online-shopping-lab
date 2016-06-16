@@ -44,7 +44,7 @@ var meals = {
   dinner: 'spaghetti'
 }
 
-for (var realName in meals) {
+for (var mealName in meals) {
   console.log(`I ate ${meals[mealName]} for ${mealName}!`)
 }
 ```
