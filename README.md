@@ -72,7 +72,7 @@ Much better.
 + Define a function `removeFromCart` which accepts one argument, the name of item you wish to remove. If the item isn't in the cart, the function should print out `"That item is not in your cart."`. If the item is in your cart, it should remove the object from the `cart` array. Then return the cart. (**HINT**: Check each object's key to see if it matches the parameter, then remove it if it matches. You might find [hasOwnProperty](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty) to be useful.)
 
 + Define a function `placeOrder` which accepts one argument, a credit card number. If no argument is received, then the function should print out `"We don't have a credit card on file for you to place your order."`.
-    If there is a credit card on file, the function should print out `"Your total cost is ${total()}, which will be charged to ${cardNumber}."`. The function should empty the `cart` array..
+    If there is a credit card on file, the function should print out `"Your total cost is $${total()}, which will be charged to the card ${cardNumber}."`. The function should empty the `cart` array..
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/js-basics-online-shopping-lab' title='Online Shopping'>Online Shopping</a> on Learn.co and start learning to code for free.</p>
 
