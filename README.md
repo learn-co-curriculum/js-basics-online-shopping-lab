@@ -55,13 +55,13 @@ Much better.
 
 ## Instructions
 
-+ We've given you a function `total` which does not accept any arguments. It iterates over the items in `cart` and adds up their prices, then returns the total.
++ We've given you a function `setCart()` which takes one argument, an array, and sets `cart` (a variable that we've provided) to that array.
+
++ We've also given you a function `total` which does not accept any arguments. It iterates over the items in `cart` and adds up their prices, then returns the total.
 
 + Define a global variable (use `var` at the top level) called `cart`. Initialize it as an empty array.
 
 + Define a function `getCart` that takes no arguments and returns the `cart`.
-
-+ Define a function `setCart` that takes one argument, an array, and sets `cart` equal to that array. (Note that we can't call `setCart`'s argument "cart"!)
 
 + Define a function `addToCart`. This function should accept one argument, the item the user wants to purchase and the cart.
     This function should automatically set a price for this item by generating a random number between 0 and 100. (Hint: `Math.random()` generates a random number in [0, 1] (0 inclusive, 1 non-inclusive); `Math.floor()` rounds a number down to the nearest integer.)
@@ -73,9 +73,5 @@ Much better.
 
 + Define a function `placeOrder` which accepts one argument, a credit card number. If no argument is received, then the function should print out `"We don't have a credit card on file for you to place your order."`.
     If there is a credit card on file, the function should print out `"Your total cost is $${total()}, which will be charged to the card ${cardNumber}."`. The function should empty the `cart` array..
-
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/js-basics-online-shopping-lab' title='Online Shopping'>Online Shopping</a> on Learn.co and start learning to code for free.</p>
-
-<p class='util--hide'>View <a href='https://learn.co/lessons/js-basics-online-shopping-lab'>JS Basics Online Shopping Lab</a> on Learn.co and start learning to code for free.</p>
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/js-basics-online-shopping-lab'>Online Shopping Lab</a> on Learn.co and start learning to code for free.</p>

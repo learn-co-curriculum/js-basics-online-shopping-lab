@@ -10,6 +10,8 @@ chai.use(spies)
 
 const expect = chai.expect
 
+const errorMessage = "Should have called `console.log()` with the appropriate string."
+
 describe('shopping', () => {
   jsdom({
     src: fs.readFileSync(path.resolve(__dirname, '..', 'shopping.js'), 'utf-8')
@@ -31,7 +33,14 @@ describe('shopping', () => {
 
       addToCart('pizza')
 
-      expect(console.log).to.have.been.called.with("pizza has been added to your cart.");
+      expect(console.log).
+        to.
+        have.
+        been.
+        called.
+        with(
+          "pizza has been added to your cart.",
+          "Should have called `console.log()` with 'pizza has been added to your cart.'");
 
       console.log.reset()
     })
@@ -55,8 +64,20 @@ describe('shopping', () => {
 
       viewCart();
 
-      expect(console.log).to.have.been.called.with(`In your cart, you have socks at $${socksCost}, puppy at $${puppyCost}, iPhone at $${iPhoneCost}.`)
+      expect(console.log).
+        to.
+        have.
+        been.
+        called.
+        with(
+          `In your cart, you have socks at $${socksCost}, puppy at $${puppyCost}, iPhone at $${iPhoneCost}.`,
+          errorMessage
+        );
       console.log.reset()
+    });
+
+    it("should print 'Your cart is empty.' if the cart is empty", () => {
+      expect(viewCart()).to.eql("Your cart is empty.");
     });
   });
 
@@ -91,7 +112,15 @@ describe('shopping', () => {
 
       removeFromCart("sock")
 
-      expect(console.log).to.have.been.called.with("That item is not in your cart.");
+      expect(console.log).
+        to.
+        have.
+        been.
+        called.
+        with(
+          "That item is not in your cart.",
+          errorMessage
+        );
     });
   });
 
@@ -101,7 +130,15 @@ describe('shopping', () => {
 
       placeOrder();
 
-      expect(console.log).to.have.been.called.with("We don't have a credit card on file for you to place your order.");
+      expect(console.log).
+        to.
+        have.
+        been.
+        called.
+        with(
+          "We don't have a credit card on file for you to place your order.",
+          errorMessage
+        );
 
       console.log.reset()
     });
@@ -115,7 +152,15 @@ describe('shopping', () => {
 
       placeOrder(123);
 
-      expect(console.log).to.have.been.called.with(`Your total cost is $${t}, which will be charged to the card 123.`)
+      expect(console.log).
+        to.
+        have.
+        been.
+        called.
+        with(
+          `Your total cost is $${t}, which will be charged to the card 123.`,
+          errorMessage
+        );
 
       console.log.reset()
     });
