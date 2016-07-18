@@ -76,8 +76,8 @@ describe('shopping', () => {
       console.log.reset()
     });
 
-    it("should print 'Your cart is empty.' if the cart is empty", () => {
-      expect(viewCart()).to.eql("Your cart is empty.");
+    it("should print 'Your shopping cart is empty.' if the cart is empty", () => {
+      expect(viewCart()).to.eql("Your shopping cart is empty.");
     });
   });
 
