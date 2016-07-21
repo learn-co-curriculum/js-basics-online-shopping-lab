@@ -1,59 +1,61 @@
-/*global beforeEach, describe, it */
+/*global afterEach, beforeEach, describe, it */
 
-const chai = require('chai')
+const expect = require('expect')
 const fs = require('fs')
-const jsdom = require('mocha-jsdom')
+const jsdom = require('jsdom')
 const path = require('path')
-const spies = require('chai-spies')
-
-chai.use(spies)
-
-const expect = chai.expect
 
 const errorMessage = "Should have called `console.log()` with the appropriate string."
 
 describe('shopping', () => {
-  jsdom({
-    src: fs.readFileSync(path.resolve(__dirname, '..', 'shopping.js'), 'utf-8')
+  before(done => {
+    const src = path.resolve(__dirname, '..', 'shopping.js')
+
+    jsdom.env('<div></div>', [src], {
+      virtualConsole: jsdom.createVirtualConsole().sendTo(console)
+    }, (error, window) => {
+      if (error) {
+        return done(error);
+      }
+
+      Object.keys(window).forEach(key => {
+        global[key] = window[key]
+      })
+
+      return done()
+    })
   })
 
   beforeEach(() => {
     setCart([])
+
+    expect.spyOn(console, 'log')
+  })
+
+  afterEach(() => {
+    expect.restoreSpies()
   })
 
   describe('#addToCart', () => {
     it("should add an item to the cart", () => {
       addToCart('pizza')
 
-      expect(getCart().length).to.equal(1);
+      expect(getCart().length).toEqual(1);
     });
 
     it("logs that the item has been added", () => {
-      chai.spy.on(console, 'log')
-
       addToCart('pizza')
 
-      expect(console.log).
-        to.
-        have.
-        been.
-        called.
-        with(
-          "pizza has been added to your cart.",
-          "Should have called `console.log()` with 'pizza has been added to your cart.'");
-
-      console.log.reset()
+      expect(console.log).toHaveBeenCalledWith("pizza has been added to your cart.")
     })
 
     it("returns the cart", () => {
-      expect(addToCart("pizza")).to.eql(getCart())
+      expect(addToCart("pizza")).toEqual(getCart())
     })
   });
 
   describe('#viewCart', () => {
     it("should print each item in the cart and their cost", () => {
-      chai.spy.on(console, 'log');
-
       addToCart("socks");
       addToCart("puppy");
       addToCart("iPhone");
@@ -64,20 +66,15 @@ describe('shopping', () => {
 
       viewCart();
 
-      expect(console.log).
-        to.
-        have.
-        been.
-        called.
-        with(
-          `In your cart, you have socks at $${socksCost}, puppy at $${puppyCost}, iPhone at $${iPhoneCost}.`,
-          errorMessage
-        );
-      console.log.reset()
+      expect(console.log).toHaveBeenCalledWith(
+        `In your cart, you have socks at $${socksCost}, puppy at $${puppyCost}, iPhone at $${iPhoneCost}.`
+      )
     });
 
     it("should print 'Your shopping cart is empty.' if the cart is empty", () => {
-      expect(viewCart()).to.eql("Your shopping cart is empty.");
+      viewCart();
+
+      expect(console.log).toHaveBeenCalledWith("Your shopping cart is empty.")
     });
   });
 
@@ -91,9 +88,9 @@ describe('shopping', () => {
       const puppyCost = getCart()[1]["puppy"];
       const iPhoneCost = getCart()[2]["iPhone"];
 
-      var totalCost = socksCost + puppyCost + iPhoneCost
+      const totalCost = socksCost + puppyCost + iPhoneCost;
 
-      expect(total()).to.equal(totalCost)
+      expect(total()).toEqual(totalCost)
     })
   })
 
@@ -101,78 +98,49 @@ describe('shopping', () => {
     it("removes the item from the cart", () => {
       addToCart('pizza')
 
-      expect(hasItem(getCart(), 'pizza')).to.equal(true)
+      expect(hasItem(getCart(), 'pizza')).toBe(true)
 
       removeFromCart("pizza");
-      expect(getCart()).to.eql([]);
+
+      expect(getCart()).toEqual([]);
     });
 
     it("alerts you if you're trying to remove an item that isn't in your cart", () => {
-      chai.spy.on(console, 'log');
-
       removeFromCart("sock")
 
-      expect(console.log).
-        to.
-        have.
-        been.
-        called.
-        with(
-          "That item is not in your cart.",
-          errorMessage
-        );
+      expect(console.log).toHaveBeenCalledWith("That item is not in your cart.")
     });
   });
 
   describe('#placeOrder', () => {
     it("doesn't let you place an order if you don't provide a credit card number", () => {
-      chai.spy.on(console, 'log');
-
       placeOrder();
 
-      expect(console.log).
-        to.
-        have.
-        been.
-        called.
-        with(
-          "We don't have a credit card on file for you to place your order.",
-          errorMessage
-        );
-
-      console.log.reset()
+      expect(console.log).toHaveBeenCalledWith(
+        "We don't have a credit card on file for you to place your order."
+      )
     });
 
     it("lets you place an order with a credit card", () => {
-      chai.spy.on(console, 'log');
-
       addToCart('pizza')
 
       const t = total()
 
       placeOrder(123);
 
-      expect(console.log).
-        to.
-        have.
-        been.
-        called.
-        with(
-          `Your total cost is $${t}, which will be charged to the card 123.`,
-          errorMessage
-        );
-
-      console.log.reset()
+      expect(console.log).toHaveBeenCalledWith(
+        `Your total cost is $${t}, which will be charged to the card 123.`
+      )
     });
 
     it('empties the cart', () => {
       addToCart('pizza')
 
-      expect(hasItem(getCart(), 'pizza')).to.be.true
+      expect(hasItem(getCart(), 'pizza')).toBe(true)
 
       placeOrder(123);
 
-      expect(getCart()).to.eql([])
+      expect(getCart()).toEqual([])
     })
   })
 })
