@@ -1,36 +1,36 @@
 /*global afterEach, beforeEach, describe, it */
 
 
-beforeEach(() => {
+beforeEach(function() {
   setCart([])
 
   expect.spyOn(console, 'log')
 })
 
-afterEach(() => {
+afterEach(function() {
   expect.restoreSpies()
 })
 
-describe('#addToCart', () => {
-  it("should add an item to the cart", () => {
+describe('#addToCart', function() {
+  it("should add an item to the cart", function() {
     addToCart('pizza')
 
     expect(getCart().length).toEqual(1);
   });
 
-  it("logs that the item has been added", () => {
+  it("logs that the item has been added", function() {
     addToCart('pizza')
 
     expect(console.log).toHaveBeenCalledWith("pizza has been added to your cart.")
   })
 
-  it("returns the cart", () => {
+  it("returns the cart", function() {
     expect(addToCart("pizza")).toEqual(getCart())
   })
 });
 
-describe('#viewCart', () => {
-  it("should print each item in the cart and their cost", () => {
+describe('#viewCart', function() {
+  it("should print each item in the cart and their cost", function() {
     addToCart("socks");
     addToCart("puppy");
     addToCart("iPhone");
@@ -46,15 +46,15 @@ describe('#viewCart', () => {
     )
   });
 
-  it("should print 'Your shopping cart is empty.' if the cart is empty", () => {
+  it("should print 'Your shopping cart is empty.' if the cart is empty", function() {
     viewCart();
 
     expect(console.log).toHaveBeenCalledWith("Your shopping cart is empty.")
   });
 });
 
-describe('#total', () => {
-  it('adds up the prices of the items in the cart', () => {
+describe('#total', function() {
+  it('adds up the prices of the items in the cart', function() {
     addToCart("socks");
     addToCart("puppy");
     addToCart("iPhone");
@@ -69,8 +69,8 @@ describe('#total', () => {
   })
 })
 
-describe('#removeFromCart', () => {
-  it("removes the item from the cart", () => {
+describe('#removeFromCart', function() {
+  it("removes the item from the cart", function() {
     addToCart('pizza')
 
     expect(hasItem(getCart(), 'pizza')).toBe(true)
@@ -80,15 +80,15 @@ describe('#removeFromCart', () => {
     expect(getCart()).toEqual([]);
   });
 
-  it("alerts you if you're trying to remove an item that isn't in your cart", () => {
+  it("alerts you if you're trying to remove an item that isn't in your cart", function() {
     removeFromCart("sock")
 
     expect(console.log).toHaveBeenCalledWith("That item is not in your cart.")
   });
 });
 
-describe('#placeOrder', () => {
-  it("doesn't let you place an order if you don't provide a credit card number", () => {
+describe('#placeOrder', function() {
+  it("doesn't let you place an order if you don't provide a credit card number", function() {
     placeOrder();
 
     expect(console.log).toHaveBeenCalledWith(
@@ -96,7 +96,7 @@ describe('#placeOrder', () => {
     )
   });
 
-  it("lets you place an order with a credit card", () => {
+  it("lets you place an order with a credit card", function() {
     addToCart('pizza')
 
     const t = total()
@@ -108,7 +108,7 @@ describe('#placeOrder', () => {
     )
   });
 
-  it('empties the cart', () => {
+  it('empties the cart', function() {
     addToCart('pizza')
 
     expect(hasItem(getCart(), 'pizza')).toBe(true)
