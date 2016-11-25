@@ -67,7 +67,7 @@ Much better.
     This function should automatically set a price for this item by generating a random number between 0 and 100. (Hint: `Math.random()` generates a random number in [0, 1] (0 inclusive, 1 non-inclusive); `Math.floor()` rounds a number down to the nearest integer.)
     This function should add the item and the price as an object (`{item: price}`) to the `cart` array. This function should print out to the console `<item> has been added to your cart.` and return the cart.
 
-+ Define a function `viewCart` which does not accept any arguments. This function should loop over every item in `cart` to print out `"In your cart you have [item and price pairs]."`. If there isn't anything in your cart, the function should print out `"Your shopping cart is empty."`.
++ Define a function `viewCart` which does not accept any arguments. This function should loop over every item in `cart` to print out `"In your cart, you have [item and price pairs]."`. If there isn't anything in your cart, the function should print out `"Your shopping cart is empty."`.
 
 + Define a function `removeFromCart` which accepts one argument, the name of the item you wish to remove. If the item isn't in the cart, the function should print out `"That item is not in your cart."`. If the item is in your cart, it should remove the object from the `cart` array. Then return the cart. (**HINT**: Check each object's key to see if it matches the parameter, then remove it if it matches. You might find [hasOwnProperty](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty) to be useful.)
 
