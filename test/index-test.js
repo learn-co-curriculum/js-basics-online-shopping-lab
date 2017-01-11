@@ -27,6 +27,11 @@ describe('#addToCart', function() {
   it("returns the cart", function() {
     expect(addToCart("pizza")).toEqual(getCart())
   })
+
+  it("adds item dynamically", function() {
+    addToCart('pizza');
+    expect(getCart()[0]['item']).toEqual(undefined)
+  })
 });
 
 describe('#viewCart', function() {
