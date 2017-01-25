@@ -38,6 +38,20 @@ function viewCart() {
   console.log(`In your cart, you have ${itemsAndPrices.join(', ')}.`)
 }
 
+// This solution is more in line with what the lesson shows them to do in the examples
+// function viewCart() {
+//   var item_printer = [];
+//   if (cart.length === 0) {
+//     console.log("Your shopping cart is empty.");
+//   };
+
+//   for (var key in cart) {
+//     var value = cart[key][Object.keys(cart[key])]
+//     item_printer.push(Object.keys(cart[key]) + " at " + "$" + value.toString());
+//   };
+//   console.log("In your cart, you have " + item_printer.join(", ") + ".");
+// };
+
 function removeFromCart(item) {
   let itemInCart = false
 
