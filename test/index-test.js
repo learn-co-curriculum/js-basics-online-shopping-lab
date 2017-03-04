@@ -30,8 +30,6 @@ describe('#addToCart', function() {
 
   it("adds item dynamically", function() {
     addToCart('pizza');
-    //we've pushed an object with the property 'pizza', not 'item'
-    //It should be: {pizza: 44}, not {item: 44}
     expect(getCart()[0].hasOwnProperty('item')).toEqual(false);
   })
 });
