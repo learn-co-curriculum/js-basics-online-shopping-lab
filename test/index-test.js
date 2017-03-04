@@ -30,7 +30,7 @@ describe('#addToCart', function() {
 
   it("adds item dynamically", function() {
     addToCart('pizza');
-    expect(getCart()[0]['item']).toEqual(undefined)
+    expect(getCart()[0].hasOwnProperty('item')).toEqual(false);
   })
 });
 
