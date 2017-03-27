@@ -1,5 +1,27 @@
+var cart = []
+
+function getCart() {
+
+}
+
 function setCart(c) {
   cart = c
+}
+
+function addToCart(item) {
+
+}
+
+function viewCart() {
+
+}
+
+function removeFromCart(item) {
+
+}
+
+function placeOrder(cardNumber) {
+
 }
 
 function total() {
