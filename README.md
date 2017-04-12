@@ -64,7 +64,7 @@ Much better.
 + Define a function `getCart` that takes no arguments and returns the `cart`.
 
 + Define a function `addToCart`. This function should accept one argument, the item the user wants to purchase.
-    This function should automatically set a price for this item by generating a random number between 0 and 100. (Hint: `Math.random()` generates a random number in [0, 1] (0 inclusive, 1 non-inclusive); `Math.floor()` rounds a number down to the nearest integer.)
+    This function should automatically set a price for this item by generating a random number between 0 and 100. (Hint: `Math.random()` generates a random number in \[0, 1] (0 inclusive, 1 non-inclusive); `Math.floor()` rounds a number down to the nearest integer.)
     This function should add the item and the price as an object (`{item: price}`) to the `cart` array. This function should print out to the console `<item> has been added to your cart.` and return the cart.
 
 + Define a function `viewCart` which does not accept any arguments. This function should loop over every item in `cart` to print out `"In your cart you have [item and price pairs]."`. If there isn't anything in your cart, the function should print out `"Your shopping cart is empty."`.
