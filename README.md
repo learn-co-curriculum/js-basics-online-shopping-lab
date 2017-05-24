@@ -1,7 +1,7 @@
 # Online Shopping
 
 ## Objectives
-+ Create and manipulate hashes
++ Create and manipulate Objects
 + Create and manipulate arrays
 + Create and call functions
 + Create and use variables
