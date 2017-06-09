@@ -54,9 +54,9 @@ Much better.
 ## Instructions
 + We've given you a function `setCart()` which takes one argument, an array, and sets `cart` (a variable that we've provided) to that array.
 
-+ We've also given you a function `total` which does not accept any arguments. It iterates over the items in `cart` and adds up their prices, then returns the total.
-
 + Define a global variable (use `var` at the top level) called `cart`. Initialize it as an empty array.
+
++ Define a function `total` which takes no arguments.  This function will iterate over all the items in `cart` and add up their prices, then return the total.
 
 + Define a function `getCart` that takes no arguments and returns the `cart`.
 
