@@ -8,9 +8,7 @@
 + Use string methods
 + Use number methods
 
-
 ## Introduction
-
 Before we dive into this lab, we need to tell you something: remember how easy it was to iterate over an array with a `for` or a `while` loop? Well, it's nearly as easy to iterate over an object in the same way. (Remember, arrays are essentially fancy objects — it makes sense that iteration would be similar.)
 
 But objects don't have sequential indexes like arrays do, so we need another way of getting the keys. Luckily, that's exactly what `Object.keys()` is for!
@@ -54,7 +52,6 @@ Much better.
 **NOTE**: You can use `for...in` loops with arrays, too, but the variable that you get will just be the index (in order), so this particular loop is _usually_ used with objects.
 
 ## Instructions
-
 + We've given you a function `setCart()` which takes one argument, an array, and sets `cart` (a variable that we've provided) to that array.
 
 + We've also given you a function `total` which does not accept any arguments. It iterates over the items in `cart` and adds up their prices, then returns the total.
