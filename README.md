@@ -1,12 +1,12 @@
 # Online Shopping
 
 ## Objectives
-+ Create and manipulate objects
-+ Create and manipulate arrays
-+ Create and call functions
-+ Create and use variables
-+ Use string methods
-+ Use number methods
++ Model a shopping cart full of items as an array of objects in JavaScript.
++ Practice dynamically setting properties (keys) of an object.
++ Work with `Object.keys()` and `.hasOwnProperty()` to retrieve and verify an object's keys.
++ Iterate over arrays with `for` loops
++ Use ES6 `${template literals}` instead of `"regular, " + "old " + string + " concatenation."`
++ Brush up on conditionals and control flow to make some Oxford comma magic happen.
 
 ## Introduction
 Before we dive into this lab, we need to tell you something: remember how easy it was to iterate over an array with a `for` or a `while` loop? Well, it's nearly as easy to iterate over an object in the same way. (Remember, arrays are essentially fancy objects — it makes sense that iteration would be similar.)
