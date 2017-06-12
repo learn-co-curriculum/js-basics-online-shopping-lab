@@ -8,49 +8,6 @@
 + Use ES6 `${template literals}` instead of `"regular, " + "old " + string + " concatenation."`
 + Brush up on conditionals and control flow to make some Oxford comma magic happen.
 
-## Introduction
-Before we dive into this lab, we need to tell you something: remember how easy it was to iterate over an array with a `for` or a `while` loop? Well, it's nearly as easy to iterate over an object in the same way. (Remember, arrays are essentially fancy objects — it makes sense that iteration would be similar.)
-
-But objects don't have sequential indexes like arrays do, so we need another way of getting the keys. Luckily, that's exactly what `Object.keys()` is for!
-
-```js
-var meals = {
-  breakfast: 'oatmeal',
-  lunch: 'tuna',
-  dinner: 'spaghetti'
-};
-
-var mealNames = Object.keys(meals);
-
-for (var i = 0, l = mealNames.length; i < l; i++) {
-  console.log(`I ate ${meals[mealNames[i]]} for ${mealNames[i]}!`);
-}
-
-// I ate oatmeal for breakfast!
-// I ate tuna for lunch!
-// I ate spaghetti for dinner!
-```
-
-But this is a little verbose and sort of hard to read. We have to get the name of the meal using `mealNames[i]` and then use that name as a key in the object `meals` to get the food for that meal: `meals[mealNames[i]]`. Gross.
-
-There's a (slightly) better way! JavaScript has a special loop, called `for...in`, that makes iterating over objects a bit easier:
-
-```js
-var meals = {
-  breakfast: 'oatmeal',
-  lunch: 'tuna',
-  dinner: 'spaghetti'
-}
-
-for (var mealName in meals) {
-  console.log(`I ate ${meals[mealName]} for ${mealName}!`)
-}
-```
-
-Much better.
-
-***NOTE***: You can use `for...in` loops with arrays, too, but the variable that you get will just be the index (in order), so this particular loop is _usually_ used with objects.
-
 ## Instructions
 We've started you off with a `cart` variable that points at an empty array. There are five functions that you'll have to code in order to create a working shopping cart:
 1. The `addToCart()` function accepts one argument, the name of an item.
@@ -73,5 +30,8 @@ We've started you off with a `cart` variable that points at an empty array. Ther
 5. The `placeOrder()` function accepts one argument, a credit card number.
     + If no argument is received, the function should print out `Sorry, we don't have a credit card on file for you.`.
     + If a card number is received, the function should print out `Your total cost is $71, which will be charged to the card 83296759.` and then empty the `cart` array.
+
+## The final send-off
+This lab is _not_ easy! The methods, especially `viewCart()` require careful planning and a sharp eye. The `cart` array is a non-trivial nested data structure, and it would be a good idea to periodically check the value of your variables (think: `console.log()`, `debugger`, etc.) at different points within your functions, _especially_ when attempting to iterate over the `cart` and its items.
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/js-basics-online-shopping-lab'>Online Shopping Lab</a> on Learn.co and start learning to code for free.</p>
