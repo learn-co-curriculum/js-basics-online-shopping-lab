@@ -1,11 +1,12 @@
-var cart = []
+var cart = [];
 
 function getCart() {
- return cart
+ return cart;
 }
 
 function setCart(c) {
-  cart = c
+  cart = c;
+  return cart;
 }
 
 function addToCart(item) {
@@ -27,4 +28,3 @@ function removeFromCart(item) {
 function placeOrder(cardNumber) {
   // write your code here
 }
-
