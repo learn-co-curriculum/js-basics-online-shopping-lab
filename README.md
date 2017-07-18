@@ -16,12 +16,12 @@ We've started you off with a `cart` variable that points at an empty array. Ther
       * ***HINT***: Look into `Math.random()` and `Math.floor()`.
     + If you're struggling to create a new object from the item name, remember that ES6 provides a nifty way to dynamically set the keys in an object literal. That is, it allows the use of variables as keys. If you're having trouble recalling the syntax, take a look back at the **Top Tip** in the [JavaScript Objects](https://learn.co/lessons/javascript-objects) lesson.
     + Upon the successful addition of a new item to the cart, the function should print `<itemName> has been added to your cart.` to the console and then `return` the updated `cart`.
-2. The `viewCart()` function does not accept any arguments. It should loop over every item in your cart, printing out the contents as one long, coherent statement in this format: `In your cart, you have bananas at $17, pancake batter at $5, and eggs at $49.`
+2. The `viewCart()` function does not accept any arguments. It should loop over every item in your cart, printing out the contents as one long, coherent statement in this format: `In your cart, you have bananas at $17, pancake batter at $5, eggs at $49.`
     + If the cart is empty, the function should instead print out `Your shopping cart is empty.`
     + ***Note***: Pay close attention to the syntax above. The printed statement should be a single sentence that begins with `In your cart, you have `, terminates in a period, and can assume the following shapes according to how many items the cart contains:
       * 1 item — `In your cart, you have bananas at $17.`
-      * 2 items — `In your cart, you have bananas at $17 and pancake batter at $5.`
-      * 3+ items — `In your cart, you have bananas at $17, pancake batter at $5, and eggs at $49.`
+      * 2 items — `In your cart, you have bananas at $17 pancake batter at $5.`
+      * 3+ items — `In your cart, you have bananas at $17, pancake batter at $5, eggs at $49.`
 3. The `total()` function accepts no arguments, iterates through the `cart` array, and returns the current total value of the items in the cart.
 4. The `removeFromCart()` function accepts one argument, the name of the item that should be removed.
     + If the cart does not contain a matching item, the function should print out `That item is not in your cart.` and return the unchanged cart.
