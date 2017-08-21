@@ -29,7 +29,7 @@ We've started you off with a `cart` variable that points at an empty array. Ther
     + ***HINT***: Check each object's key (the name of the item) to see if it matches the parameter, then remove it if it matches. You might find [hasOwnProperty](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty) to be useful.
 5. The `placeOrder()` function accepts one argument, a credit card number.
     + If no argument is received, the function should print out `Sorry, we don't have a credit card on file for you.`.
-    + If a card number is received, the function should print out `Your total cost is $71, which will be charged to the card 83296759.` and then empty the `cart` array.
+    + If a card number is received, the function should print out `Your total cost is $71, which will be charged to the card 83296759.` (where `71` is the value returned by `total()` and `83296759` is the credit card number passed to `placeOrder()`). Then, it should empty the `cart` array.
 
 ## The final send-off
 This lab is _not_ easy! The methods, especially `viewCart()` require careful planning and a sharp eye. The `cart` array is a non-trivial nested data structure, and it would be a good idea to periodically check the value of your variables (think: `console.log()`, `debugger`, etc.) at different points within your functions, _especially_ when attempting to iterate over the `cart` and its items.
