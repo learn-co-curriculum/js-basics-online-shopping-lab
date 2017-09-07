@@ -1,24 +1,29 @@
 /*global afterEach, beforeEach, describe, it */
+const expect = chai.expect;
+let spy;
 
 beforeEach(function() {
   setCart([]);
-
-  expect.spyOn(console, "log");
+  spy = sinon.spy(console, "log");
+  spy.lastCall = {}
+  spy.lastCall.args = []
 });
 
 afterEach(function() {
-  expect.restoreSpies();
+  spy.restore();
 });
+
+
 
 describe("addToCart()", function() {
   it("can add items to the cart", function() {
     addToCart("apples");
 
-    expect(getCart().length).toEqual(1);
+    expect(getCart().length).to.eq(1);
 
     addToCart("bananas");
 
-    expect(getCart().length).toEqual(2);
+    expect(getCart().length).to.eq(2);
   });
 
   it("turns items into JavaScript objects before adding them to the cart", function() {
@@ -26,7 +31,7 @@ describe("addToCart()", function() {
 
     let itemConstructor = getCart()[0].constructor;
 
-    expect(itemConstructor).toEqual(Object);
+    expect(itemConstructor).to.eq(Object);
   });
 
   it("properly structures objects in the { itemName: itemPrice } format", function() {
@@ -35,8 +40,8 @@ describe("addToCart()", function() {
     let itemName = Object.keys(getCart()[0])[0];
     let itemPrice = getCart()[0][itemName];
 
-    expect(itemName).toEqual("daikon");
-    expect(Number.isInteger(itemPrice)).toBe(true);
+    expect(itemName).to.eq("daikon");
+    expect(Number.isInteger(itemPrice)).to.be.true;
   });
 
   it("sets the price as an integer between 1 and 100", function() {
@@ -44,8 +49,8 @@ describe("addToCart()", function() {
 
     let itemPrice = getCart()[0]["eggplant"];
 
-    expect(itemPrice).toBeLessThanOrEqualTo(100)
-                     .toBeGreaterThanOrEqualTo(1);
+    expect(itemPrice).to.be.at.most(100)
+                     .and.at.least(1);
   });
 
   it("chooses the price at random", function() {
@@ -57,21 +62,26 @@ describe("addToCart()", function() {
     let prices = getCart().map(c => c[Object.keys(c)[0]]);
     let pricesEqual = prices[0] === prices[1] && prices[1] === prices[2];
 
-    expect(pricesEqual).toBe(false);
+    expect(pricesEqual).to.be.false;
   });
 
   it("prints a message to the console indicating that the item has been added", function() {
     addToCart("ice cream");
 
-    expect(console.log).toHaveBeenCalledWith("ice cream has been added to your cart.");
+    let iceCreamMessage = spy.lastCall.args[0];
+
+    expect(iceCreamMessage).to.eq("ice cream has been added to your cart.");
 
     addToCart("juice");
 
-    expect(console.log).toHaveBeenCalledWith("juice has been added to your cart.");
+    let juiceMessage = spy.lastCall.args[0];
+
+    expect(juiceMessage).to.eq("juice has been added to your cart.");
+
   });
 
   it("returns the cart", function() {
-    expect(addToCart("kale")).toEqual(getCart());
+    expect(addToCart("kale")).to.eq(getCart());
   });
 });
 
@@ -79,7 +89,9 @@ describe("viewCart()", function() {
   it("prints 'Your shopping cart is empty.' if the cart is empty", function() {
     viewCart();
 
-    expect(console.log).toHaveBeenCalledWith("Your shopping cart is empty.")
+    let emptyMessage = spy.lastCall.args[0];
+
+    expect(emptyMessage).to.eq("Your shopping cart is empty.")
   });
 
   it("correctly prints a one-item cart", function() {
@@ -89,9 +101,13 @@ describe("viewCart()", function() {
 
     viewCart();
 
-    expect(console.log).toHaveBeenCalledWith(
+
+    let lemonsMessage = spy.lastCall.args[0];
+
+    expect(lemonsMessage).to.eq(
       `In your cart, you have lemons at $${lemonsCost}.`
     );
+
   });
 
   it("correctly prints a two-item cart", function() {
@@ -103,7 +119,9 @@ describe("viewCart()", function() {
 
     viewCart();
 
-    expect(console.log).toHaveBeenCalledWith(
+    let twoItemMessage = spy.lastCall.args[0];
+
+    expect(twoItemMessage).to.eq(
       `In your cart, you have mango at $${mangoCost} and nuts at $${nutsCost}.`
     );
   });
@@ -119,7 +137,9 @@ describe("viewCart()", function() {
 
     viewCart();
 
-    expect(console.log).toHaveBeenCalledWith(
+    let threeItemMessage = spy.lastCall.args[0];
+
+    expect(threeItemMessage).to.eq(
       `In your cart, you have orange at $${orangeCost}, pear at $${pearCost}, and quince at $${quinceCost}.`
     );
 
@@ -129,7 +149,9 @@ describe("viewCart()", function() {
 
     viewCart();
 
-    expect(console.log).toHaveBeenCalledWith(
+    let fourItemMessage = spy.lastCall.args[0];
+
+    expect(fourItemMessage).to.eq(
       `In your cart, you have orange at $${orangeCost}, pear at $${pearCost}, quince at $${quinceCost}, and rhubarb at $${rhubarbCost}.`
     );
   });
@@ -145,7 +167,7 @@ describe("total()", function() {
 
     let totalCost = sorghumCost + tarragonCost;
 
-    expect(total()).toBe(totalCost);
+    expect(total()).to.eq(totalCost);
 
     addToCart("urchin");
 
@@ -153,7 +175,7 @@ describe("total()", function() {
 
     totalCost += urchinCost;
 
-    expect(total()).toBe(totalCost);
+    expect(total()).to.eq(totalCost);
   });
 });
 
@@ -168,19 +190,21 @@ describe("removeFromCart()", function() {
     const firstItem = Object.keys(getCart()[0])[0];
     const secondItem = Object.keys(getCart()[1])[0];
 
-    expect(firstItem).toEqual("vanilla");
-    expect(secondItem).toEqual("yams");
+    expect(firstItem).to.eq("vanilla");
+    expect(secondItem).to.eq("yams");
 
     removeFromCart("yams");
 
-    expect(getCart().length).toEqual(1);
+    expect(getCart().length).to.eq(1);
   });
 
   it("alerts you if you're trying to remove an item that isn't in your cart", function() {
     // Repeat item name from previous test to prevent hard-coding.
     removeFromCart("yams");
 
-    expect(console.log).toHaveBeenCalledWith("That item is not in your cart.");
+    let invalidRemovalMessage = spy.lastCall.args[0];
+
+    expect(invalidRemovalMessage).to.eq("That item is not in your cart.");
   });
 });
 
@@ -188,7 +212,9 @@ describe("placeOrder()", function() {
   it("doesn't place the order if a credit card number is not provided", function() {
     placeOrder();
 
-    expect(console.log).toHaveBeenCalledWith(
+    let sorryMessage = spy.lastCall.args[0];
+
+    expect(sorryMessage).to.eq(
       "Sorry, we don't have a credit card on file for you."
     );
   });
@@ -201,7 +227,9 @@ describe("placeOrder()", function() {
 
     placeOrder(cardNumber);
 
-    expect(console.log).toHaveBeenCalledWith(
+    let totalMessage = spy.lastCall.args[0];
+
+    expect(totalMessage).to.eq(
       `Your total cost is $${cartTotal}, which will be charged to the card ${cardNumber}.`
     );
   });
@@ -211,6 +239,6 @@ describe("placeOrder()", function() {
 
     placeOrder(12345678);
 
-    expect(getCart()).toEqual([]);
+    expect(getCart()).to.be.empty;
   });
 });

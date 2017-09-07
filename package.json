@@ -2,12 +2,13 @@
   "name": "js-basics-online-shopping-lab",
   "version": "0.1.0",
   "description": "Practice with objects, arrays, and functions in JavaScript on Learn",
-  "main": "shopping.js",
+  "main": "index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "mocha -R mocha-multi --reporter-options nyan=-,json=.results.json"
+    "postinstall": "gem install learn-co",
+    "test": "node_modules/browser-sync/bin/browser-sync.js start --config node_modules/learn-browser/bs-config.js"
   },
   "repository": {
     "type": "git",
@@ -28,11 +29,6 @@
   },
   "homepage": "https://github.com/learn-co-curriculum/js-basics-online-shopping-lab#readme",
   "devDependencies": {
-    "babel-core": "^6.11.4",
-    "babel-preset-es2015": "^6.9.0",
-    "expect": "^1.20.2",
-    "jsdom": "^9.0.0",
-    "mocha": "^2.4.5",
-    "mocha-multi": "^0.9.0"
+    "learn-browser": "^0.1.12"
   }
 }

@@ -1,20 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="utf-8">
+
     <title>Shopping!</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="node_modules/mocha/mocha.css" />
+    <meta name="description" content="JavaScript Fundamentals">
+    <meta name="author" content="Flatiron School">
+
+    <!-- Include Mocha's stylesheet to style test results -->
+    <link rel="stylesheet" href="node_modules/mocha/mocha.css">
   </head>
+
   <body>
+    <!-- <div> for Mocha to display test results. -->
     <div id="mocha"></div>
+
+    <!-- Include Mocha and set it up for BDD-style testing. -->
     <script src="node_modules/mocha/mocha.js"></script>
-    <script src="node_modules/expect/umd/expect.min.js"></script>
     <script>mocha.setup('bdd');</script>
+
+    <!-- Include Chai as the matcher library. -->
+    <script src="node_modules/chai/chai.js"></script>
+
+    <!-- Include Sinon as the library for spies, stubs, and mocks. -->
+    <script src="node_modules/sinon/pkg/sinon.js"></script>
+
+    <!-- Include any fixtures that the test suite and/or student's code relies on. -->
+    <script src="test/fixtures.js"></script>
+
+    <!-- Include the student's JavaScript file. -->
     <script src="index.js"></script>
+
+    <!-- Include the JavaScript file containing the tests. -->
     <script src="test/index-test.js"></script>
-    <script>
-      mocha.run();
-    </script>
+
+    <!-- Include Flatiron School's minified test runner to push results to Learn. -->
+    <script src="node_modules/learn-browser/learnBrowser.min.js"></script>
   </body>
 </html>
