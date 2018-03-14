@@ -17,7 +17,7 @@ We've started you off with a `cart` variable that points at an empty array. Ther
     + If the cart is empty, the function should instead return `Your shopping cart is empty.`
     + ***Note***: Pay close attention to the syntax above. The returned statement should be a single sentence that begins with `In your cart, you have `, terminates in a period, and can assume the following shapes according to how many items the cart contains:
       * 1 item — `In your cart, you have bananas at $17.`
-      * 2 items — `In your cart, you have bananas at $17 and pancake batter at $5.`
+      * 2 items — `In your cart, you have bananas at $17, and pancake batter at $5.`
       * 3+ items — `In your cart, you have bananas at $17, pancake batter at $5, and eggs at $49.`
 3. The `total()` function accepts no arguments, iterates through the `cart` array, and returns the current total value of the items in the cart.
 4. The `removeFromCart()` function accepts one argument, the name of the item that should be removed.
